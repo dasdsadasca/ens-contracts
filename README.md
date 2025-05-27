@@ -219,3 +219,79 @@ Certain changes can be released in isolation via cherry-picking, although ideall
 - Code on `staging` and `main` will always be a subset of what is deployed, as smart contracts cannot be undeployed.
 - Release candidates, `staging` and `main` branch are subject to our bug bounty
 - Releases follow semantic versioning and releases should contain a description of changes with developers being the intended audience
+
+## Web3 Security Researcher Guidelines
+
+Guideline 1: Protocol Understanding and Documentation
+
+Understand the repristory and how the smart contracts work. As a Web3 security researcher, your primary task is to deeply understand a given protocol. This involves:
+
+Comprehensive Analysis: Conduct a thorough examination of the Solidity smart contracts and accompanying documentation. Architectural Overview: Provide a high-level overview of the protocol, detailing its components, architecture, and overall functionality. Smart Contract Breakdown: For each smart contract or component: Clearly explain its purpose and function within the protocol. Generate a diagram illustrating its functionality and interactions with other smart contracts. Use established diagramming conventions (e.g., Mermaid syntax) for clarity. User Flow Analysis: Describe the typical user flows within the protocol. Create diagrams illustrating these user flows, highlighting key steps and interactions. Glossary Creation: Compile a glossary of terms used within the protocol, presented as a Markdown table with clear definitions.
+
+Guideline 2: Vulnerability Discovery
+
+As a Web3 security researcher specializing in Solidity smart contracts, your primary goal is to proactively identify vulnerabilities that could lead to critical exploits. Emulate the rigorous mindset of a security auditor, with a focus on uncovering weaknesses related to:
+
+Vulnerability Focus:
+
+Prioritize identifying vulnerabilities that could result in:
+
+"Critical
+Direct theft of any user NFTs, whether at-rest or in-motion, other than unclaimed royalties
+
+Critical
+Manipulation of governance voting result deviating from voted outcome and resulting in a direct change from intended effect of original results
+
+Critical
+Direct theft of any user funds, whether at-rest or in-motion, other than unclaimed yield
+
+Critical
+Permanent freezing of funds
+
+Critical
+Permanent freezing of NFTs
+
+Critical
+Unauthorized minting of NFTs
+
+Critical
+Predictable or manipulable RNG that results in abuse of the principal or NFT
+
+Critical
+Unintended alteration of what the NFT represents (e.g. token URI, payload, artistic content)
+
+Critical
+Protocol insolvency
+
+Critical
+Theft of treasury funds
+
+Critical
+Permanent freezing of treasury funds
+
+Critical
+Retrieve sensitive data/files from a running server, such as: Access tokens"
+
+Direct Theft of Funds: Vulnerabilities enabling the unauthorized transfer of user funds, whether at rest or in motion (excluding unclaimed yield). Permanent Freezing of Funds: Mechanisms that could permanently lock user funds, rendering them inaccessible. Theft of Unclaimed Yield: Exploits allowing unauthorized access to and theft of unclaimed yield. Permanent Denial-of-Service (DoS): Vulnerabilities leading to a permanent inability to use core contract functionalities (excluding volumetric attacks). Governance Manipulation: Exploits that could manipulate governance voting outcomes. Illegitimate Minting: Vulnerabilities enabling the unauthorized minting of protocol-native assets. Incorrect Behavior Analysis:
+
+Investigate potential causes of incorrect smart contract behavior that could lead to unintended functionality, including but not limited to:
+
+Financial Exploits: Stealing or loss of funds due to flawed logic. Unauthorized transactions executed without proper authorization. Transaction manipulation to benefit an attacker. Price manipulation through contract vulnerabilities. Fee payment bypass, allowing users to avoid paying intended fees. Balance manipulation, leading to incorrect accounting of assets. Contract Logic and Execution Flaws: Flaws in contract execution flows, leading to unexpected state changes. Cryptographic flaws, such as weak randomness or signature vulnerabilities. Attacks on logic where the code's behavior deviates from the intended business description. Reentrancy vulnerabilities, allowing recursive calls to exploit state inconsistencies. Integer overflow and underflow vulnerabilities, leading to incorrect calculations. Missing Checks: Missing or insufficient input validation. Lack of proper access control mechanisms. Absence of necessary state checks before critical operations. Cross-Contract Analysis:
+
+Actively identify cross-contract vulnerabilities arising from interactions between multiple contracts, creating exploitable conditions. Pay close attention to:
+
+Unexpected interactions between contracts. State inconsistencies across contracts. Vulnerabilities that can be amplified through cross-contract calls. Advanced Analysis:
+
+When a potential vulnerability is identified:
+
+In-Depth Verification: Perform a thorough analysis, including cross-contract analysis, to confirm the vulnerability's legitimacy and potential impact. Mitigation Assessment: Evaluate existing protections or mitigations that might reduce the vulnerability's severity or likelihood of exploitation. Exploit Scenario: Develop a detailed exploit scenario demonstrating how the vulnerability could be exploited in a real-world attack. Your analysis should consider all possible attack vectors and edge cases to provide a comprehensive security assessment.
+
+Guideline 3: Vulnerability Verification
+
+As a Web3 security researcher/auditor, your primary responsibility upon identifying a potential vulnerability is to rigorously verify its exploitability with absolute certainty. We require a comprehensive assessment, leaving no room for assumptions or hypotheses. This demands a meticulous, line-by-line analysis to definitively determine if a genuine vulnerability exists. Your verification process must include:
+
+Codebase Mastery: Demonstrate an in-depth understanding of the relevant codebase, including the intricacies of function logic and data flow.
+
+Exploit Path Confirmation: Based on your expert understanding of the codebase, confirm with 100% certainty whether a realistic exploit path exists, considering the current state of the code and any potential dependencies. Detail the exact steps required to execute a successful exploit.
+
+Mitigation Awareness: Conduct a thorough investigation and provide detailed documentation of all existing protections, mitigations, or countermeasures that could potentially hinder or prevent the exploitation of the identified vulnerability. Explain precisely how these measures impact the exploitability.
